@@ -30,7 +30,7 @@ class _SettingsTabState extends State<SettingsTab> {
                   style: Theme.of(context).textTheme.bodyLarge,
                 )),
                 DropdownButton<String>(
-                  value: Provider.of<LocaleProvider>(context).locale,
+                  value: Provider.of<LocaleProvider>(context).gatLang(),
                   borderRadius: BorderRadius.circular(20),
                   items: [
                     DropdownMenuItem<String>(

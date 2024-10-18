@@ -6,9 +6,13 @@ import 'package:islamy/screens/quran_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  LocaleProvider myProvider = LocaleProvider();
+  await myProvider.initialzation();
+
   runApp(ChangeNotifierProvider<LocaleProvider>(
-    create: (context) => LocaleProvider(),
+    create: (context) => myProvider,
     child: const MyApp(),
   ));
 }
@@ -27,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       title: "Islami",
-      locale: Locale(Provider.of<LocaleProvider>(context).locale),
+      locale: Locale(Provider.of<LocaleProvider>(context).gatLang()),
       debugShowCheckedModeBanner: false,
       routes: {
         Home.routename: (_) => const Home(),
